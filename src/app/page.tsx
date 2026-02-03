@@ -9,12 +9,14 @@ import { Faq5 } from "@/components/home/Faq5";
 import { Cta57 } from "@/components/home/Cta57";
 import { Contact13 } from "@/components/home/Contact13";
 import { Footer3 } from "@/components/shared/Footer3";
+import { Layout412 } from "@/components/home/Layout412";
 
 export default function Page() {
   return (
     <div>
       <Navbar2 />
       <Header83 />
+      <Layout412 />
       <Layout361 />
       <Layout16 />
       <Layout220 />

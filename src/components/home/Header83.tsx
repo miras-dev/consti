@@ -2,19 +2,25 @@
 
 import { Button } from "@relume_io/relume-ui";
 import { motion, useScroll, useTransform } from "framer-motion";
-import React from "react";
+import React, { useRef } from "react";
 
 export function Header83() {
-  const { scrollYProgress } = useScroll();
-  const opacityContent = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
-  const opacityOverlay = useTransform(scrollYProgress, [0, 1], [1, 0]);
-  const scale = useTransform(scrollYProgress, [0, 1], [3.2, 1]);
+  const sectionRef = useRef<HTMLElement>(null);
+
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start start", "end start"],
+  });
+
+  const opacityContent = useTransform(scrollYProgress, [0, 0.35], [1, 0]);
+  const opacityOverlay = useTransform(scrollYProgress, [0, 0.6], [1, 0]);
+  const scale = useTransform(scrollYProgress, [0, 0.8], [3.2, 1]);
 
   return (
-    <section id="relume" className="relative h-[300vh]">
+    <section ref={sectionRef} id="relume" className="relative h-[700vh]">
       <div className="sticky top-0 h-screen overflow-hidden">
         <motion.div
-          className="flex h-full items-center justify-center"
+          className="absolute inset-0 z-10 flex h-full items-center justify-center"
           style={{ opacity: opacityContent }}
         >
           <div className="px-[5%] py-16 md:py-24 lg:py-28">
@@ -44,20 +50,71 @@ export function Header83() {
           />
           <motion.div
             style={{ scale }}
-            className="grid size-full auto-cols-fr grid-cols-1 gap-x-4 gap-y-4 md:grid-cols-3"
+            className="grid h-full w-full grid-cols-1 grid-rows-3 gap-4 md:grid-cols-3"
           >
-            {[1, 2, 3, 4, 5, 6, 7, 8, 9].map((i) => (
-              <div
-                key={i}
-                className={`relative ${i % 3 !== 2 ? "hidden md:block" : ""}`}
-              >
-                <img
-                  src="https://d22po4pjz3o32e.cloudfront.net/placeholder-image.svg"
-                  alt={`Relume placeholder image ${i}`}
-                  className="absolute inset-0 size-full object-cover"
-                />
-              </div>
-            ))}
+            <div className="relative hidden md:block">
+              <img
+                src="https://d22po4pjz3o32e.cloudfront.net/placeholder-image.svg"
+                alt="Relume placeholder image 1"
+                className="absolute inset-0 size-full object-cover"
+              />
+            </div>
+            <div className="relative">
+              <img
+                src="https://d22po4pjz3o32e.cloudfront.net/placeholder-image.svg"
+                alt="Relume placeholder image 2"
+                className="absolute inset-0 size-full object-cover"
+              />
+            </div>
+            <div className="relative hidden md:block">
+              <img
+                src="https://d22po4pjz3o32e.cloudfront.net/placeholder-image.svg"
+                alt="Relume placeholder image 3"
+                className="absolute inset-0 size-full object-cover"
+              />
+            </div>
+            <div className="relative hidden md:block">
+              <img
+                src="https://d22po4pjz3o32e.cloudfront.net/placeholder-image.svg"
+                alt="Relume placeholder image 4"
+                className="absolute inset-0 size-full object-cover"
+              />
+            </div>
+            <div className="relative">
+              <img
+                src="https://d22po4pjz3o32e.cloudfront.net/placeholder-image.svg"
+                alt="Relume placeholder image 5"
+                className="absolute inset-0 size-full object-cover"
+              />
+            </div>
+            <div className="relative hidden md:block">
+              <img
+                src="https://d22po4pjz3o32e.cloudfront.net/placeholder-image.svg"
+                alt="Relume placeholder image 6"
+                className="absolute inset-0 size-full object-cover"
+              />
+            </div>
+            <div className="relative hidden md:block">
+              <img
+                src="https://d22po4pjz3o32e.cloudfront.net/placeholder-image.svg"
+                alt="Relume placeholder image 7"
+                className="absolute inset-0 size-full object-cover"
+              />
+            </div>
+            <div className="relative">
+              <img
+                src="https://d22po4pjz3o32e.cloudfront.net/placeholder-image.svg"
+                alt="Relume placeholder image 8"
+                className="absolute inset-0 size-full object-cover"
+              />
+            </div>
+            <div className="relative hidden md:block">
+              <img
+                src="https://d22po4pjz3o32e.cloudfront.net/placeholder-image.svg"
+                alt="Relume placeholder image 9"
+                className="absolute inset-0 size-full object-cover"
+              />
+            </div>
           </motion.div>
         </div>
       </div>

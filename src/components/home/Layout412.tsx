@@ -1,7 +1,8 @@
 'use client';
 import { Button, useMediaQuery } from "@relume_io/relume-ui";
 import type { ButtonProps } from "@relume_io/relume-ui";
-import { motion } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
+import { useRef } from "react";
 import { RxChevronRight } from "react-icons/rx";
 
 type ImageProps = {
@@ -31,13 +32,31 @@ export const Layout412 = (props: Layout412Props) => {
         ...props,
     };
 
+    const sectionRef = useRef<HTMLElement>(null);
     const isMobile = useMediaQuery("(max-width: 767px)");
 
+    const { scrollYProgress } = useScroll({
+        target: sectionRef,
+        offset: ["start end", "end start"],
+    });
+
+    const imageWidth = useTransform(
+        scrollYProgress,
+        [0, 0.3, 0.5],
+        isMobile ? ["100%", "100%", "100%"] : ["200%", "120%", "100%"]
+    );
+
     return (
-        <section id="relume" className="px-[5%] py-16 md:py-24 lg:py-28">
+        <section ref={sectionRef} id="relume" className="px-[5%] py-16 md:py-24 lg:py-28">
             <div className="container">
                 <div className="grid grid-cols-1 items-center gap-y-12 md:grid-cols-2 md:gap-0">
-                    <div className="md:mr-12 lg:mr-20">
+                    <motion.div
+                        className="md:mr-12 lg:mr-20"
+                        initial={{ opacity: 0, y: 40 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.8, ease: "easeOut" }}
+                        viewport={{ once: true, margin: "-100px" }}
+                    >
                         <p className="mb-3 font-semibold md:mb-4">{tagline}</p>
                         <h1 className="rb-5 mb-5 text-5xl font-bold md:mb-6 md:text-7xl lg:text-8xl">
                             {heading}
@@ -50,14 +69,14 @@ export const Layout412 = (props: Layout412Props) => {
                                 </Button>
                             ))}
                         </div>
-                    </div>
+                    </motion.div>
                     <motion.div
-                        className="relative justify-self-end pt-[100%]"
-                        initial={
-                            isMobile ? { width: "100%", height: "100%" } : { width: "200%", height: "100%" }
-                        }
-                        animate={{ width: "100%", height: "100%" }}
-                        transition={{ duration: 1, ease: "easeInOut" }}
+                        className="relative justify-self-end overflow-hidden"
+                        style={{ width: imageWidth, paddingTop: "100%" }}
+                        initial={{ opacity: 0 }}
+                        whileInView={{ opacity: 1 }}
+                        transition={{ duration: 0.6, ease: "easeOut" }}
+                        viewport={{ once: true, margin: "-100px" }}
                     >
                         <img
                             src={image.src}
@@ -72,14 +91,15 @@ export const Layout412 = (props: Layout412Props) => {
 };
 
 export const Layout412Defaults: Props = {
-    tagline: "Tagline",
-    heading: "Medium length section heading goes here",
+    tagline: "Trusted",
+    heading: "Who I am and what I do",
     description:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique. Duis cursus, mi quis viverra ornare, eros dolor interdum nulla, ut commodo diam libero vitae erat.",
+        "I work with students, professionals, and internationals to build financial stability and advance their careers. My approach combines practical expertise with straightforward communication, cutting through complexity to reveal what matters most for your future.",
+    subHeadings: [],
     buttons: [
-        { title: "Button", variant: "secondary" },
+        { title: "About me", variant: "secondary" },
         {
-            title: "Button",
+            title: "Explore",
             variant: "link",
             size: "link",
             iconRight: <RxChevronRight />,
@@ -87,6 +107,6 @@ export const Layout412Defaults: Props = {
     ],
     image: {
         src: "https://d22po4pjz3o32e.cloudfront.net/placeholder-image.svg",
-        alt: "Relume placeholder image",
+        alt: "Constantin Nixdorff",
     },
 };

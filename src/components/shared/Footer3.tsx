@@ -12,7 +12,7 @@ import { FaXTwitter } from "react-icons/fa6";
 
 export function Footer3() {
   return (
-    <footer id="relume" className="px-[5%] py-12 md:py-18 lg:py-20">
+    <footer id="relume" className="bg-black text-white px-[5%] py-12 md:py-18 lg:py-20">
       <div className="container">
         <div className="grid grid-cols-1 gap-x-[4vw] gap-y-12 pb-12 md:gap-y-16 md:pb-18 lg:grid-cols-[1fr_0.5fr] lg:gap-y-4 lg:pb-20">
           <div>
@@ -33,13 +33,13 @@ export function Footer3() {
               <p className="mb-1 text-sm font-semibold">Contact</p>
               <a
                 href="tel:+491727488509"
-                className="block text-sm underline decoration-black underline-offset-1"
+                className="block text-sm underline decoration-white underline-offset-1"
               >
                 +49 172 7488509
               </a>
               <a
                 href="mailto:info@relume.io"
-                className="block text-sm underline decoration-black underline-offset-1"
+                className="block text-sm underline decoration-white underline-offset-1"
               >
                 info@relume.io
               </a>
@@ -99,7 +99,7 @@ export function Footer3() {
             </ul>
           </div>
         </div>
-        <div className="h-px w-full bg-black" />
+        <div className="h-px w-full bg-white/20" />
         <div className="flex flex-col-reverse items-start justify-between pb-4 pt-6 text-sm md:flex-row md:items-center md:pb-0 md:pt-8">
           <p className="mt-8 md:mt-0">
             &copy; 2024 Constantin Nixdorff. All rights reserved.

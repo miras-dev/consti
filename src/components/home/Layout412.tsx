@@ -70,7 +70,7 @@ export const Layout412 = (props: Layout412Props) => {
                     <div className="container">
                         <div className="max-w-md lg:max-w-lg">
                             <p className="mb-3 font-semibold md:mb-4">{tagline}</p>
-                            <h1 className="rb-5 mb-5 text-5xl font-bold md:mb-6 md:text-5xl lg:text-5xl">
+                            <h1 className="mb-5 text-3xl font-bold md:mb-6 md:text-4xl lg:text-5xl">
                                 {heading}
                             </h1>
                             <p className="mb-6 md:mb-8 md:text-lg">{description}</p>

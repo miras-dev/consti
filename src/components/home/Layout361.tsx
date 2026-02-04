@@ -11,7 +11,7 @@ export function Layout361() {
         <div className="rb-12 mb-12 md:mb-18 lg:mb-20">
           <div className="mx-auto max-w-lg text-center">
             <p className="mb-3 font-semibold md:mb-4">Services</p>
-            <h2 className="rb-5 mb-5 text-5xl font-bold md:mb-6 md:text-7xl lg:text-8xl">
+            <h2 className="mb-5 text-3xl font-bold md:mb-6 md:text-4xl lg:text-5xl">
               Two paths to success
             </h2>
             <p className="md:text-md">
@@ -26,12 +26,17 @@ export function Layout361() {
                 src="https://d22po4pjz3o32e.cloudfront.net/placeholder-image-landscape.svg"
                 className="size-full object-cover"
                 alt="Finance consulting"
+                loading="lazy"
+                onError={(e) => {
+                  const target = e.target as HTMLImageElement;
+                  target.style.display = 'none';
+                }}
               />
             </div>
             <div className="p-6 md:p-8 lg:p-12">
               <p className="mb-2 text-sm font-semibold">Finance</p>
-              <h3 className="mb-5 text-4xl font-bold leading-[1.2] md:mb-6 md:text-5xl lg:text-6xl">
-                Financial consulting for your future
+              <h3 className="mb-5 text-xl font-bold leading-[1.2] md:mb-6 md:text-2xl lg:text-3xl">
+                Financial consulting for your secure-future
               </h3>
               <p>
                 Personal planning, investment strategies, retirement guidance,
@@ -58,11 +63,16 @@ export function Layout361() {
                 src="https://d22po4pjz3o32e.cloudfront.net/placeholder-image-landscape.svg"
                 className="size-full object-cover"
                 alt="Career coaching"
+                loading="lazy"
+                onError={(e) => {
+                  const target = e.target as HTMLImageElement;
+                  target.style.display = 'none';
+                }}
               />
             </div>
             <div className="p-6 md:p-8 lg:p-12">
               <p className="mb-2 text-sm font-semibold">Career</p>
-              <h3 className="mb-5 text-4xl font-bold leading-[1.2] md:mb-6 md:text-5xl lg:text-6xl">
+              <h3 className="mb-5 text-xl font-bold leading-[1.2] md:mb-6 md:text-2xl lg:text-3xl">
                 Coaching to advance your professional path
               </h3>
               <p>

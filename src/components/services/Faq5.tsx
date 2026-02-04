@@ -17,7 +17,7 @@ export function Faq5() {
     <section id="relume" className="px-[5%] py-16 md:py-24 lg:py-28">
       <div className="container">
         <div className="rb-12 mb-12 max-w-lg md:mb-18 lg:mb-20">
-          <h2 className="rb-5 mb-5 text-5xl font-bold md:mb-6 md:text-7xl lg:text-8xl">Questions</h2>
+          <h2 className="mb-5 text-3xl font-bold md:mb-6 md:text-4xl lg:text-5xl">Questions</h2>
           <p className="md:text-md">Find answers to common questions about my consulting approach and services.</p>
         </div>
         <Accordion type="multiple" className="grid items-start justify-stretch gap-4">
@@ -29,7 +29,7 @@ export function Faq5() {
           ))}
         </Accordion>
         <div className="mt-12 md:mt-18 lg:mt-20">
-          <h4 className="mb-3 text-2xl font-bold md:mb-4 md:text-3xl md:leading-[1.3] lg:text-4xl">Ready to get started?</h4>
+          <h4 className="mb-3 text-xl font-bold md:mb-4 md:text-2xl lg:text-3xl">Ready to get started?</h4>
           <p className="md:text-md">Reach out to discuss your situation.</p>
           <div className="mt-6 md:mt-8"><Button title="Contact" variant="secondary">Contact</Button></div>
         </div>

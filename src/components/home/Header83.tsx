@@ -63,6 +63,7 @@ export function Header83() {
   const opacityContent = useTransform(scrollYProgress, [0, 0.35], [1, 0]);
   const opacityOverlay = useTransform(scrollYProgress, [0, 0.6], [1, 0]);
   const scale = useTransform(scrollYProgress, [0, 0.8], [3.2, 1]);
+  const opacityLabels = useTransform(scrollYProgress, [0.4, 0.75], [0, 1]);
 
   return (
     <section ref={sectionRef} id="relume" data-navbar-theme="dark" className="relative h-[700vh]">
@@ -71,22 +72,22 @@ export function Header83() {
           className="absolute inset-0 z-10 flex h-full items-center justify-center"
           style={{ opacity: opacityContent }}
         >
-          <div className="px-[5%] py-16 md:py-24 lg:py-28">
-            <div className="relative z-10 mx-auto text-center">
-              <h1 className="mb-5 text-6xl font-bold text-text-alternative md:mb-6 md:text-7xl lg:text-10xl">
-                Build your financial future 
+          <div className="px-[5%]">
+            <div className="relative z-10 mx-auto max-w-3xl text-center">
+              <h1 className="mb-5 text-4xl font-bold text-text-alternative md:mb-6 md:text-5xl lg:text-6xl">
+                Build your financial future
                 <br />
                 with clarity and purpose
               </h1>
-              <p className="text-text-alternative md:text-lg max-w-lg">
+              <p className="mx-auto text-text-alternative md:text-lg max-w-lg">
                 Independent financial and career consulting tailored to your
                 goals. Whether you&apos;re starting out, advancing your career,
                 or planning for retirement, I provide transparent guidance
                 grounded in real expertise.
               </p>
               <div className="mt-6 flex items-center justify-center gap-x-4 md:mt-8">
-                <Button title="Book consultation">Book consultation</Button>
-                <Button title="Learn more" variant="secondary-alt">
+                <Button title="Book consultation" className="bg-white text-black hover:bg-gray-100 shadow-lg">Book consultation</Button>
+                <Button title="Learn more" variant="secondary-alt" className="border-2 border-white text-white hover:bg-white hover:text-black shadow-lg">
                   Learn more
                 </Button>
               </div>
@@ -105,21 +106,24 @@ export function Header83() {
             {services.map((service, i) => (
               <div
                 key={i}
-                className={`relative overflow-hidden ${
-                  i % 3 !== 1 ? "hidden md:block" : ""
-                }`}
+                className={`relative overflow-hidden ${i % 3 !== 1 ? "hidden md:block" : ""
+                  }`}
               >
                 <img
                   src={service.src}
                   alt={service.alt}
                   className="absolute inset-0 size-full object-cover"
+                  style={{ filter: "brightness(0.4) contrast(0.8)" }}
                 />
                 <div className="absolute inset-0 bg-black/30" />
-                <div className="absolute inset-0 flex items-end p-4 md:p-5">
-                  <span className="text-sm font-semibold tracking-wide text-white md:text-base">
+                <motion.div
+                  className="absolute inset-0 flex items-center justify-center p-4 md:p-5"
+                  style={{ opacity: opacityLabels }}
+                >
+                  <span className="text-xs font-bold uppercase tracking-widest text-white md:text-lg">
                     {service.label}
                   </span>
-                </div>
+                </motion.div>
               </div>
             ))}
           </motion.div>

@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import openai from "@/lib/openai";
 import { getSettings, searchChunks } from "@/lib/rag-store";
+import { convertMarkdownToOrganizedText } from "@/lib/markdownToText";
 
 export async function POST(request: NextRequest) {
   try {
@@ -43,7 +44,10 @@ export async function POST(request: NextRequest) {
       completion.choices[0]?.message?.content ||
       "I could not generate a response.";
 
-    return NextResponse.json({ message: responseMessage });
+    // Convert markdown formatting to plain text
+    const plainTextResponse = convertMarkdownToOrganizedText(responseMessage);
+
+    return NextResponse.json({ message: plainTextResponse });
   } catch (error: unknown) {
     const errorMessage =
       error instanceof Error ? error.message : "Unknown error";

@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState, useRef, useEffect } from "react";
+import { convertMarkdownToOrganizedText } from "@/lib/markdownToText";
 
 interface Message {
   role: "user" | "assistant";
@@ -23,7 +24,7 @@ export function ChatWidget() {
       .then((data) => {
         if (data.welcomeMessage) setWelcomeMessage(data.welcomeMessage);
       })
-      .catch(() => {});
+      .catch(() => { });
   }, []);
 
   useEffect(() => {
@@ -46,9 +47,12 @@ export function ChatWidget() {
         }),
       });
       const data = await res.json();
+      const assistantMessage = data.message || "Sorry, I could not process your request.";
+      // Convert markdown to plain text
+      const plainTextMessage = convertMarkdownToOrganizedText(assistantMessage);
       setMessages((prev) => [
         ...prev,
-        { role: "assistant", content: data.message || "Sorry, I could not process your request." },
+        { role: "assistant", content: plainTextMessage },
       ]);
     } catch {
       setMessages((prev) => [
@@ -97,11 +101,10 @@ export function ChatWidget() {
                 className={`mb-3 flex ${msg.role === "user" ? "justify-end" : "justify-start"}`}
               >
                 <div
-                  className={`max-w-[80%] rounded-lg px-3 py-2 text-sm ${
-                    msg.role === "user"
-                      ? "bg-black text-white"
-                      : "bg-neutral-lightest text-text-primary"
-                  }`}
+                  className={`max-w-[80%] rounded-lg px-3 py-2 text-sm whitespace-pre-line ${msg.role === "user"
+                    ? "bg-black text-white"
+                    : "bg-neutral-lightest text-text-primary"
+                    }`}
                 >
                   {msg.content}
                 </div>
@@ -110,7 +113,7 @@ export function ChatWidget() {
             {isLoading && (
               <div className="mb-3 flex justify-start">
                 <div className="rounded-lg bg-neutral-lightest px-3 py-2 text-sm text-text-secondary">
-                  Thinking...
+                  ...
                 </div>
               </div>
             )}

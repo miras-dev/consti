@@ -11,7 +11,7 @@ export function Layout16() {
         <div className="grid grid-cols-1 gap-y-12 md:grid-cols-2 md:items-center md:gap-x-12 lg:gap-x-20">
           <div>
             <p className="mb-3 font-semibold md:mb-4">Personalised</p>
-            <h1 className="mb-5 text-5xl font-bold md:mb-6 md:text-7xl lg:text-8xl">
+            <h1 className="mb-5 text-3xl font-bold md:mb-6 md:text-4xl lg:text-5xl">
               Consulting shaped around your circumstances
             </h1>
             <p className="mb-5 text-base md:mb-6 md:text-md">

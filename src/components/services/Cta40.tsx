@@ -5,11 +5,11 @@ import React from "react";
 
 export function Cta40() {
   return (
-    <section id="relume" className="px-[5%] py-16 md:py-24 lg:py-28">
+    <section id="relume" className="bg-black text-white px-[5%] py-16 md:py-24 lg:py-28">
       <div className="container">
-        <div className="grid auto-cols-fr grid-cols-1 border border-border-primary lg:grid-cols-2">
+        <div className="grid auto-cols-fr grid-cols-1 border border-white/20 lg:grid-cols-2">
           <div className="flex flex-col justify-center p-8 md:p-12">
-            <h2 className="mb-5 text-5xl font-bold md:mb-6 md:text-7xl lg:text-8xl">Start your consultation today</h2>
+            <h2 className="mb-5 text-3xl font-bold md:mb-6 md:text-4xl lg:text-5xl">Start your consultation today</h2>
             <p className="md:text-md">Book a session and take the first step towards financial clarity and career growth.</p>
             <div className="mt-6 w-full max-w-sm md:mt-8">
               <form className="rb-4 mb-4 grid w-full max-w-sm grid-cols-1 gap-y-3 sm:grid-cols-[1fr_max-content] sm:gap-4">
@@ -20,7 +20,16 @@ export function Cta40() {
             </div>
           </div>
           <div className="flex items-center justify-center">
-            <img src="https://d22po4pjz3o32e.cloudfront.net/placeholder-image-landscape4x3.svg" className="w-full object-cover" alt="Consultation" />
+            <img
+              src="https://images.unsplash.com/photo-1556761175-b413da4baf72?w=800&q=80"
+              className="w-full object-cover"
+              alt="Consultation"
+              loading="lazy"
+              onError={(e) => {
+                const target = e.target as HTMLImageElement;
+                target.style.display = 'none';
+              }}
+            />
           </div>
         </div>
       </div>

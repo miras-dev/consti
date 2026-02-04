@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
+import PDFParser from "pdf2json";
 import {
   getChunks,
   saveChunks,
@@ -51,11 +52,18 @@ export async function POST(request: NextRequest) {
     if (ext === ".pdf") {
       const buffer = Buffer.from(await file.arrayBuffer());
       try {
-        const { PDFParse } = await import("pdf-parse");
-        const parser = new PDFParse({ data: buffer });
-        const result = await parser.getText();
-        text = result.text || "";
-      } catch {
+        text = await new Promise<string>((resolve, reject) => {
+          const pdfParser = new PDFParser(null, true);
+          pdfParser.on("pdfParser_dataError", (errData) => {
+            reject(errData instanceof Error ? errData : new Error(String(errData)));
+          });
+          pdfParser.on("pdfParser_dataReady", () => {
+            resolve(pdfParser.getRawTextContent());
+          });
+          pdfParser.parseBuffer(buffer);
+        });
+      } catch (error) {
+        console.error("PDF parsing error:", error);
         return NextResponse.json(
           { error: "Failed to parse PDF file" },
           { status: 400 }

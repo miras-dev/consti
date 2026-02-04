@@ -11,7 +11,7 @@ export function Contact13() {
       <div className="container">
         <div className="rb-12 mb-12 max-w-lg md:mb-18 lg:mb-20">
           <p className="mb-3 font-semibold md:mb-4">Reach out</p>
-          <h2 className="rb-5 mb-5 text-5xl font-bold md:mb-6 md:text-7xl lg:text-8xl">Get in touch</h2>
+          <h2 className="mb-5 text-3xl font-bold md:mb-6 md:text-4xl lg:text-5xl">Get in touch</h2>
           <p className="md:text-md">Based in Berlin with clients across Germany and beyond</p>
         </div>
         <div className="grid auto-cols-fr grid-cols-1 gap-x-12 gap-y-12 sm:grid-cols-2 md:gap-x-20 md:gap-y-16 lg:grid-cols-[0.5fr_1fr]">

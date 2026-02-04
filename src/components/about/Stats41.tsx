@@ -23,20 +23,20 @@ export function Stats41() {
         <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
           <div className="flex flex-col border border-border-primary p-8 md:col-span-2 md:row-span-1 lg:col-span-1 lg:row-span-2">
             <h3 className="mb-8 text-md font-bold leading-[1.4] md:mb-10 md:text-xl lg:mb-12">Client backgrounds</h3>
-            <p className="mt-auto text-right text-10xl font-bold leading-[1.3] md:text-[4rem] lg:text-[5rem]">5+</p>
+            <p className="mt-auto text-right text-10xl font-bold leading-[1.3] md:text-[3rem] lg:text-[3.5rem]">5+</p>
             <div className="my-4 h-px w-full bg-border-primary" />
             <p className="text-right">Years supporting diverse professional groups</p>
           </div>
           <div><img className="aspect-[3/2] size-full object-cover" src="https://d22po4pjz3o32e.cloudfront.net/placeholder-image.svg" alt="Stats" /></div>
           <div className="border border-border-primary p-8">
             <h3 className="mb-8 text-md font-bold leading-[1.4] md:mb-10 md:text-xl lg:mb-12">Client backgrounds</h3>
-            <p className="text-right text-10xl font-bold leading-[1.3] md:text-[4rem] lg:text-[5rem]">5+</p>
+            <p className="text-right text-10xl font-bold leading-[1.3] md:text-[3rem] lg:text-[3.5rem]">5+</p>
             <div className="my-4 h-px w-full bg-border-primary" />
             <p className="text-right">Years supporting diverse professional groups</p>
           </div>
           <div className="border border-border-primary p-8">
             <h3 className="mb-8 text-md font-bold leading-[1.4] md:mb-10 md:text-xl lg:mb-12">Client backgrounds</h3>
-            <p className="text-right text-10xl font-bold leading-[1.3] md:text-[4rem] lg:text-[5rem]">5+</p>
+            <p className="text-right text-10xl font-bold leading-[1.3] md:text-[3rem] lg:text-[3.5rem]">5+</p>
             <div className="my-4 h-px w-full bg-border-primary" />
             <p className="text-right">Years supporting diverse professional groups</p>
           </div>

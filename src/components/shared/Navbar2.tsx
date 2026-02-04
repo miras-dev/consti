@@ -35,11 +35,9 @@ const useRelume = () => {
 
 export function Navbar2() {
   const useActive = useRelume();
+
   return (
-    <section
-      id="relume"
-      className="flex w-full items-center border-b border-border-primary bg-background-primary lg:min-h-18 lg:px-[5%]"
-    >
+    <nav className="fixed top-0 left-0 z-50 flex w-full items-center border-b border-border-primary bg-white lg:min-h-18 lg:px-[5%]">
       <div className="mx-auto size-full lg:grid lg:grid-cols-[0.375fr_1fr_0.375fr] lg:items-center lg:justify-between lg:gap-4">
         <div className="flex min-h-16 items-center justify-between px-[5%] md:min-h-18 lg:min-h-full lg:px-0">
           <Link href="/">
@@ -111,19 +109,19 @@ export function Navbar2() {
         >
           <Link
             href="/"
-            className="block py-3 text-md first:pt-7 lg:px-4 lg:py-2 lg:text-base first:lg:pt-2"
+            className="block py-3 text-md text-black first:pt-7 lg:px-4 lg:py-2 lg:text-base first:lg:pt-2"
           >
             Home
           </Link>
           <Link
             href="/about-constantin-nixdorff"
-            className="block py-3 text-md lg:px-4 lg:py-2 lg:text-base"
+            className="block py-3 text-md text-black lg:px-4 lg:py-2 lg:text-base"
           >
             About
           </Link>
           <Link
             href="/services"
-            className="block py-3 text-md lg:px-4 lg:py-2 lg:text-base"
+            className="block py-3 text-md text-black lg:px-4 lg:py-2 lg:text-base"
           >
             Services
           </Link>
@@ -132,7 +130,7 @@ export function Navbar2() {
             onMouseLeave={useActive.closeOnDesktopDropdownMenu}
           >
             <button
-              className="flex w-full items-center justify-center gap-4 py-3 text-center text-md lg:w-auto lg:flex-none lg:justify-start lg:gap-2 lg:px-4 lg:py-2 lg:text-base"
+              className="flex w-full items-center justify-center gap-4 py-3 text-center text-md text-black lg:w-auto lg:flex-none lg:justify-start lg:gap-2 lg:px-4 lg:py-2 lg:text-base"
               onClick={useActive.openOnMobileDropdownMenu}
             >
               <span>More</span>
@@ -164,23 +162,23 @@ export function Navbar2() {
                 initial="close"
                 exit="close"
                 transition={{ duration: 0.2 }}
-                className="bg-background-primary lg:absolute lg:z-50 lg:border lg:border-border-primary lg:p-2 lg:[--y-close:25%]"
+                className="bg-white lg:absolute lg:z-50 lg:border lg:border-border-primary lg:p-2 lg:[--y-close:25%]"
               >
                 <Link
                   href="/services"
-                  className="block py-3 text-center lg:px-4 lg:py-2 lg:text-left"
+                  className="block py-3 text-center text-black lg:px-4 lg:py-2 lg:text-left"
                 >
                   Financial
                 </Link>
                 <Link
                   href="/services"
-                  className="block py-3 text-center lg:px-4 lg:py-2 lg:text-left"
+                  className="block py-3 text-center text-black lg:px-4 lg:py-2 lg:text-left"
                 >
                   Career
                 </Link>
                 <Link
                   href="/contact"
-                  className="block py-3 text-center lg:px-4 lg:py-2 lg:text-left"
+                  className="block py-3 text-center text-black lg:px-4 lg:py-2 lg:text-left"
                 >
                   Contact
                 </Link>
@@ -194,6 +192,6 @@ export function Navbar2() {
           </Button>
         </div>
       </div>
-    </section>
+    </nav>
   );
 }

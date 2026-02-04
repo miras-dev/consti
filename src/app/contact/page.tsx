@@ -9,7 +9,7 @@ import { Cta52_1 } from "@/components/contact/Cta52_1";
 
 export default function ContactPage() {
   return (
-    <div>
+    <div className="pt-18">
       <Navbar2 />
       <Header62 />
       <Contact13 />

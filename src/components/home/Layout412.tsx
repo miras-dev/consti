@@ -37,54 +37,73 @@ export const Layout412 = (props: Layout412Props) => {
 
     const { scrollYProgress } = useScroll({
         target: sectionRef,
-        offset: ["start end", "end start"],
+        offset: ["start end", "center center"],
     });
 
-    const imageWidth = useTransform(
+    // Image starts centered (translateX: -50%) then slides to right (translateX: 0%)
+    const imageX = useTransform(
         scrollYProgress,
-        [0, 0.3, 0.5],
-        isMobile ? ["100%", "100%", "100%"] : ["200%", "120%", "100%"]
+        [0, 0.6, 1],
+        isMobile ? ["0%", "0%", "0%"] : ["-50%", "-10%", "0%"]
+    );
+
+    // Text fades in and slides up as image moves right
+    const textOpacity = useTransform(
+        scrollYProgress,
+        [0.3, 0.7, 1],
+        [0, 0.5, 1]
+    );
+    const textY = useTransform(
+        scrollYProgress,
+        [0.3, 0.7, 1],
+        [60, 20, 0]
     );
 
     return (
-        <section ref={sectionRef} id="relume" className="px-[5%] py-16 md:py-24 lg:py-28">
-            <div className="container">
-                <div className="grid grid-cols-1 items-center gap-y-12 md:grid-cols-2 md:gap-0">
-                    <motion.div
-                        className="md:mr-12 lg:mr-20"
-                        initial={{ opacity: 0, y: 40 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.8, ease: "easeOut" }}
-                        viewport={{ once: true, margin: "-100px" }}
-                    >
-                        <p className="mb-3 font-semibold md:mb-4">{tagline}</p>
-                        <h1 className="rb-5 mb-5 text-5xl font-bold md:mb-6 md:text-7xl lg:text-8xl">
-                            {heading}
-                        </h1>
-                        <p className="mb-6 md:mb-8 md:text-md">{description}</p>
-                        <div className="mt-6 flex items-center gap-4 md:mt-8">
-                            {buttons.map((button, index) => (
-                                <Button key={index} {...button}>
-                                    {button.title}
-                                </Button>
-                            ))}
+        <section ref={sectionRef} id="relume" className="relative h-screen overflow-hidden bg-black text-white">
+            <div className="relative h-full">
+                {/* Text content - left side, vertically centered */}
+                <motion.div
+                    className="relative z-10 flex h-full items-center px-[5%]"
+                    style={isMobile ? {} : { opacity: textOpacity, y: textY }}
+                >
+                    <div className="container">
+                        <div className="max-w-md lg:max-w-lg">
+                            <p className="mb-3 font-semibold md:mb-4">{tagline}</p>
+                            <h1 className="rb-5 mb-5 text-5xl font-bold md:mb-6 md:text-5xl lg:text-5xl">
+                                {heading}
+                            </h1>
+                            <p className="mb-6 md:mb-8 md:text-lg">{description}</p>
+                            <div className="mt-6 flex items-center gap-4 md:mt-8">
+                                <a
+                                    href="/about-constantin-nixdorff"
+                                    className="inline-flex items-center justify-center border border-white bg-white px-6 py-3 text-sm font-medium text-black transition-colors hover:bg-transparent hover:text-white"
+                                >
+                                    About me
+                                </a>
+                                <a
+                                    href="/services"
+                                    className="inline-flex items-center gap-2 text-sm font-medium text-white underline underline-offset-4 transition-colors hover:text-white/80"
+                                >
+                                    Explore
+                                    <RxChevronRight />
+                                </a>
+                            </div>
                         </div>
-                    </motion.div>
-                    <motion.div
-                        className="relative justify-self-end overflow-hidden"
-                        style={{ width: imageWidth, paddingTop: "100%" }}
-                        initial={{ opacity: 0 }}
-                        whileInView={{ opacity: 1 }}
-                        transition={{ duration: 0.6, ease: "easeOut" }}
-                        viewport={{ once: true, margin: "-100px" }}
-                    >
-                        <img
-                            src={image.src}
-                            alt={image.alt}
-                            className="absolute inset-0 size-full object-cover"
-                        />
-                    </motion.div>
-                </div>
+                    </div>
+                </motion.div>
+
+                {/* Image - starts centered, slides right, anchored to bottom */}
+                <motion.div
+                    className="absolute bottom-0 right-0 h-full w-full md:w-[55%]"
+                    style={isMobile ? {} : { x: imageX }}
+                >
+                    <img
+                        src={image.src}
+                        alt={image.alt}
+                        className="absolute bottom-0 right-0 h-full w-full object-contain object-bottom"
+                    />
+                </motion.div>
             </div>
         </section>
     );
@@ -106,7 +125,7 @@ export const Layout412Defaults: Props = {
         },
     ],
     image: {
-        src: "https://d22po4pjz3o32e.cloudfront.net/placeholder-image.svg",
-        alt: "Constantin Nixdorff",
+        src: "Main.png",
+        alt: "Constantin Nixdorff - Financial and Career Consultant",
     },
 };

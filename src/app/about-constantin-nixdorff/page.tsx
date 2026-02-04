@@ -12,7 +12,7 @@ import { Contact13 } from "@/components/about/Contact13";
 
 export default function AboutPage() {
   return (
-    <div>
+    <div className="pt-18">
       <Navbar2 />
       <Header62 />
       <Layout149 />

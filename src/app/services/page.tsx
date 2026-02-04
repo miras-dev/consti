@@ -11,7 +11,7 @@ import { Cta40 } from "@/components/services/Cta40";
 
 export default function ServicesPage() {
   return (
-    <div>
+    <div className="pt-18">
       <Navbar2 />
       <Header62 />
       <Layout385 />

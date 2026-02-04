@@ -4,6 +4,54 @@ import { Button } from "@relume_io/relume-ui";
 import { motion, useScroll, useTransform } from "framer-motion";
 import React, { useRef } from "react";
 
+const services = [
+  {
+    label: "Financial Planning",
+    src: "https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=800&q=80",
+    alt: "Financial planning and budgeting",
+  },
+  {
+    label: "Investment & ETFs",
+    src: "https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=800&q=80",
+    alt: "Investment strategies and ETFs",
+  },
+  {
+    label: "Retirement Planning",
+    src: "https://images.unsplash.com/photo-1531973576160-7125cd663d86?w=800&q=80",
+    alt: "Retirement and pension planning",
+  },
+  {
+    label: "Insurance Analysis",
+    src: "https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=800&q=80",
+    alt: "Insurance coverage analysis",
+  },
+  {
+    label: "Career Coaching",
+    src: "https://images.unsplash.com/photo-1521737711867-e3b97375f902?w=800&q=80",
+    alt: "Career coaching and guidance",
+  },
+  {
+    label: "Tax Optimization",
+    src: "https://images.unsplash.com/photo-1554224154-22dec7ec8818?w=800&q=80",
+    alt: "Tax-efficient financial structuring",
+  },
+  {
+    label: "Salary Negotiation",
+    src: "https://images.unsplash.com/photo-1573497491208-6b1acb260507?w=800&q=80",
+    alt: "Salary negotiation coaching",
+  },
+  {
+    label: "Internationals in Germany",
+    src: "https://images.unsplash.com/photo-1467269204594-9661b134dd2b?w=800&q=80",
+    alt: "Financial guidance for internationals in Germany",
+  },
+  {
+    label: "Sustainable Investing",
+    src: "https://images.unsplash.com/photo-1473186578172-c141e6798cf4?w=800&q=80",
+    alt: "Sustainable and ethical investment",
+  },
+];
+
 export function Header83() {
   const sectionRef = useRef<HTMLElement>(null);
 
@@ -17,18 +65,20 @@ export function Header83() {
   const scale = useTransform(scrollYProgress, [0, 0.8], [3.2, 1]);
 
   return (
-    <section ref={sectionRef} id="relume" className="relative h-[700vh]">
+    <section ref={sectionRef} id="relume" data-navbar-theme="dark" className="relative h-[700vh]">
       <div className="sticky top-0 h-screen overflow-hidden">
         <motion.div
           className="absolute inset-0 z-10 flex h-full items-center justify-center"
           style={{ opacity: opacityContent }}
         >
           <div className="px-[5%] py-16 md:py-24 lg:py-28">
-            <div className="relative z-10 mx-auto max-w-lg text-center">
-              <h1 className="mb-5 text-6xl font-bold text-text-alternative md:mb-6 md:text-9xl lg:text-10xl">
-                Build your financial future with clarity and purpose
+            <div className="relative z-10 mx-auto text-center">
+              <h1 className="mb-5 text-6xl font-bold text-text-alternative md:mb-6 md:text-7xl lg:text-10xl">
+                Build your financial future 
+                <br />
+                with clarity and purpose
               </h1>
-              <p className="text-text-alternative md:text-md">
+              <p className="text-text-alternative md:text-lg max-w-lg">
                 Independent financial and career consulting tailored to your
                 goals. Whether you&apos;re starting out, advancing your career,
                 or planning for retirement, I provide transparent guidance
@@ -50,71 +100,28 @@ export function Header83() {
           />
           <motion.div
             style={{ scale }}
-            className="grid h-full w-full grid-cols-1 grid-rows-3 gap-4 md:grid-cols-3"
+            className="grid h-full w-full grid-cols-1 grid-rows-3 gap-0 md:grid-cols-3"
           >
-            <div className="relative hidden md:block">
-              <img
-                src="https://d22po4pjz3o32e.cloudfront.net/placeholder-image.svg"
-                alt="Relume placeholder image 1"
-                className="absolute inset-0 size-full object-cover"
-              />
-            </div>
-            <div className="relative">
-              <img
-                src="https://d22po4pjz3o32e.cloudfront.net/placeholder-image.svg"
-                alt="Relume placeholder image 2"
-                className="absolute inset-0 size-full object-cover"
-              />
-            </div>
-            <div className="relative hidden md:block">
-              <img
-                src="https://d22po4pjz3o32e.cloudfront.net/placeholder-image.svg"
-                alt="Relume placeholder image 3"
-                className="absolute inset-0 size-full object-cover"
-              />
-            </div>
-            <div className="relative hidden md:block">
-              <img
-                src="https://d22po4pjz3o32e.cloudfront.net/placeholder-image.svg"
-                alt="Relume placeholder image 4"
-                className="absolute inset-0 size-full object-cover"
-              />
-            </div>
-            <div className="relative">
-              <img
-                src="https://d22po4pjz3o32e.cloudfront.net/placeholder-image.svg"
-                alt="Relume placeholder image 5"
-                className="absolute inset-0 size-full object-cover"
-              />
-            </div>
-            <div className="relative hidden md:block">
-              <img
-                src="https://d22po4pjz3o32e.cloudfront.net/placeholder-image.svg"
-                alt="Relume placeholder image 6"
-                className="absolute inset-0 size-full object-cover"
-              />
-            </div>
-            <div className="relative hidden md:block">
-              <img
-                src="https://d22po4pjz3o32e.cloudfront.net/placeholder-image.svg"
-                alt="Relume placeholder image 7"
-                className="absolute inset-0 size-full object-cover"
-              />
-            </div>
-            <div className="relative">
-              <img
-                src="https://d22po4pjz3o32e.cloudfront.net/placeholder-image.svg"
-                alt="Relume placeholder image 8"
-                className="absolute inset-0 size-full object-cover"
-              />
-            </div>
-            <div className="relative hidden md:block">
-              <img
-                src="https://d22po4pjz3o32e.cloudfront.net/placeholder-image.svg"
-                alt="Relume placeholder image 9"
-                className="absolute inset-0 size-full object-cover"
-              />
-            </div>
+            {services.map((service, i) => (
+              <div
+                key={i}
+                className={`relative overflow-hidden ${
+                  i % 3 !== 1 ? "hidden md:block" : ""
+                }`}
+              >
+                <img
+                  src={service.src}
+                  alt={service.alt}
+                  className="absolute inset-0 size-full object-cover"
+                />
+                <div className="absolute inset-0 bg-black/30" />
+                <div className="absolute inset-0 flex items-end p-4 md:p-5">
+                  <span className="text-sm font-semibold tracking-wide text-white md:text-base">
+                    {service.label}
+                  </span>
+                </div>
+              </div>
+            ))}
           </motion.div>
         </div>
       </div>

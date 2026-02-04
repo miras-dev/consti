@@ -1,4 +1,4 @@
-import { Navbar2 } from "@/components/shared/Navbar2";
+    import { Navbar2 } from "@/components/shared/Navbar2";
 import { Header83 } from "@/components/home/Header83";
 import { Layout361 } from "@/components/home/Layout361";
 import { Layout16 } from "@/components/home/Layout16";

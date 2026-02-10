@@ -6,17 +6,10 @@ import {
   splitTextIntoChunks,
   TextChunk,
 } from "@/lib/rag-store";
-
-function checkAuth(request: NextRequest): boolean {
-  const auth = request.headers.get("authorization");
-  const expected = Buffer.from(
-    `${process.env.ADMIN_USERNAME || "admin"}:${process.env.ADMIN_PASSWORD || "admin123"}`
-  ).toString("base64");
-  return auth === `Basic ${expected}`;
-}
+import { checkAdminAuth } from "@/lib/cms-auth";
 
 export async function POST(request: NextRequest) {
-  if (!checkAuth(request)) {
+  if (!checkAdminAuth(request)) {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 

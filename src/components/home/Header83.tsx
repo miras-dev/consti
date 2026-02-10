@@ -1,59 +1,23 @@
 "use client";
 
-import { Button } from "@relume_io/relume-ui";
 import { motion, useScroll, useTransform } from "framer-motion";
-import React, { useRef } from "react";
-
-const services = [
-  {
-    label: "Financial Planning",
-    src: "https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=800&q=80",
-    alt: "Financial planning and budgeting",
-  },
-  {
-    label: "Investment & ETFs",
-    src: "https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=800&q=80",
-    alt: "Investment strategies and ETFs",
-  },
-  {
-    label: "Retirement Planning",
-    src: "https://images.unsplash.com/photo-1531973576160-7125cd663d86?w=800&q=80",
-    alt: "Retirement and pension planning",
-  },
-  {
-    label: "Insurance Analysis",
-    src: "https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=800&q=80",
-    alt: "Insurance coverage analysis",
-  },
-  {
-    label: "Career Coaching",
-    src: "https://images.unsplash.com/photo-1521737711867-e3b97375f902?w=800&q=80",
-    alt: "Career coaching and guidance",
-  },
-  {
-    label: "Tax Optimization",
-    src: "https://images.unsplash.com/photo-1554224154-22dec7ec8818?w=800&q=80",
-    alt: "Tax-efficient financial structuring",
-  },
-  {
-    label: "Salary Negotiation",
-    src: "https://images.unsplash.com/photo-1573497491208-6b1acb260507?w=800&q=80",
-    alt: "Salary negotiation coaching",
-  },
-  {
-    label: "Internationals in Germany",
-    src: "https://images.unsplash.com/photo-1467269204594-9661b134dd2b?w=800&q=80",
-    alt: "Financial guidance for internationals in Germany",
-  },
-  {
-    label: "Sustainable Investing",
-    src: "https://images.unsplash.com/photo-1473186578172-c141e6798cf4?w=800&q=80",
-    alt: "Sustainable and ethical investment",
-  },
-];
+import { useRef } from "react";
+import { useLanguage } from "@/contexts/LanguageContext";
+import { useCmsImage } from "@/hooks/useCmsImage";
 
 export function Header83() {
   const sectionRef = useRef<HTMLElement>(null);
+  const { t } = useLanguage();
+
+  const imgFinancialPlanning = useCmsImage('home.header83.financialPlanning', 'https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=800&q=80');
+  const imgInvestmentEtfs = useCmsImage('home.header83.investmentEtfs', 'https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=800&q=80');
+  const imgRetirementPlanning = useCmsImage('home.header83.retirementPlanning', 'https://images.unsplash.com/photo-1531973576160-7125cd663d86?w=800&q=80');
+  const imgInsuranceAnalysis = useCmsImage('home.header83.insuranceAnalysis', 'https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=800&q=80');
+  const imgCareerCoaching = useCmsImage('home.header83.careerCoaching', 'https://images.unsplash.com/photo-1521737711867-e3b97375f902?w=800&q=80');
+  const imgTaxOptimization = useCmsImage('home.header83.taxOptimization', 'https://images.unsplash.com/photo-1554224154-22dec7ec8818?w=800&q=80');
+  const imgSalaryNegotiation = useCmsImage('home.header83.salaryNegotiation', 'https://images.unsplash.com/photo-1573497491208-6b1acb260507?w=800&q=80');
+  const imgInternationals = useCmsImage('home.header83.internationals', 'https://images.unsplash.com/photo-1467269204594-9661b134dd2b?w=800&q=80');
+  const imgSustainableInvesting = useCmsImage('home.header83.sustainableInvesting', 'https://images.unsplash.com/photo-1473186578172-c141e6798cf4?w=800&q=80');
 
   const { scrollYProgress } = useScroll({
     target: sectionRef,
@@ -65,6 +29,54 @@ export function Header83() {
   const scale = useTransform(scrollYProgress, [0, 0.8], [3.2, 1]);
   const opacityLabels = useTransform(scrollYProgress, [0.4, 0.75], [0, 1]);
 
+  const services = [
+    {
+      label: t.services.financialPlanning,
+      src: imgFinancialPlanning,
+      alt: "Financial planning and budgeting",
+    },
+    {
+      label: t.services.investmentEtfs,
+      src: imgInvestmentEtfs,
+      alt: "Investment strategies and ETFs",
+    },
+    {
+      label: t.services.retirementPlanning,
+      src: imgRetirementPlanning,
+      alt: "Retirement and pension planning",
+    },
+    {
+      label: t.services.insuranceAnalysis,
+      src: imgInsuranceAnalysis,
+      alt: "Insurance coverage analysis",
+    },
+    {
+      label: t.services.careerCoaching,
+      src: imgCareerCoaching,
+      alt: "Career coaching and guidance",
+    },
+    {
+      label: t.services.taxOptimization,
+      src: imgTaxOptimization,
+      alt: "Tax-efficient financial structuring",
+    },
+    {
+      label: t.services.salaryNegotiation,
+      src: imgSalaryNegotiation,
+      alt: "Salary negotiation coaching",
+    },
+    {
+      label: t.services.internationalsInGermany,
+      src: imgInternationals,
+      alt: "Financial guidance for internationals in Germany",
+    },
+    {
+      label: t.services.sustainableInvesting,
+      src: imgSustainableInvesting,
+      alt: "Sustainable and ethical investment",
+    },
+  ];
+
   return (
     <section ref={sectionRef} id="relume" data-navbar-theme="dark" className="relative h-[700vh]">
       <div className="sticky top-0 h-screen overflow-hidden">
@@ -75,21 +87,23 @@ export function Header83() {
           <div className="px-[5%]">
             <div className="relative z-10 mx-auto max-w-3xl text-center">
               <h1 className="mb-5 text-4xl font-bold text-text-alternative md:mb-6 md:text-5xl lg:text-6xl">
-                Build your financial future
-                <br />
-                with clarity and purpose
+                {t.hero.title.split('\n').map((line, index) => (
+                  <span key={index}>
+                    {line}
+                    {index === 0 && <br />}
+                  </span>
+                ))}
               </h1>
               <p className="mx-auto text-text-alternative md:text-lg max-w-lg">
-                Independent financial and career consulting tailored to your
-                goals. Whether you&apos;re starting out, advancing your career,
-                or planning for retirement, I provide transparent guidance
-                grounded in real expertise.
+                {t.hero.subtitle}
               </p>
               <div className="mt-6 flex items-center justify-center gap-x-4 md:mt-8">
-                <Button title="Book consultation" className="bg-white text-black hover:bg-gray-100 shadow-lg">Book consultation</Button>
-                <Button title="Learn more" variant="secondary-alt" className="border-2 border-white text-white hover:bg-white hover:text-black shadow-lg">
-                  Learn more
-                </Button>
+                <button className="btn-outline-light">
+                  {t.hero.bookConsultation}
+                </button>
+                <button className="btn-ghost text-white hover:bg-white/10">
+                  {t.hero.learnMore}
+                </button>
               </div>
             </div>
           </div>

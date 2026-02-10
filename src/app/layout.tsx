@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { ChatWidget } from "@/components/chatbot/ChatWidget";
+import { LanguageProvider } from "@/contexts/LanguageContext";
+import { LanguageUpdater } from "@/components/shared/LanguageUpdater";
 
 export const metadata: Metadata = {
   title: "Constantin Nixdorff - Financial & Career Consulting",
@@ -16,8 +18,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className="antialiased">
-        {children}
-        <ChatWidget />
+        <LanguageProvider>
+          <LanguageUpdater />
+          {children}
+          <ChatWidget />
+        </LanguageProvider>
       </body>
     </html>
   );

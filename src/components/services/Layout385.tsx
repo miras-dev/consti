@@ -3,8 +3,11 @@
 import { Button } from "@relume_io/relume-ui";
 import React from "react";
 import { RxChevronRight } from "react-icons/rx";
+import { useCmsImage } from "@/hooks/useCmsImage";
 
 export function Layout385() {
+  const financialImg = useCmsImage('services.layout385.financial', 'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=1200&q=80');
+  const careerImg = useCmsImage('services.layout385.career', 'https://images.unsplash.com/photo-1521737711867-e3b97375f902?w=800&q=80');
   return (
     <section id="relume" className="px-[5%] py-16 md:py-24 lg:py-28">
       <div className="container">
@@ -17,7 +20,7 @@ export function Layout385() {
           <div className="grid auto-cols-fr grid-cols-1 flex-col border border-border-primary sm:grid-cols-2 lg:col-span-2">
             <div className="flex size-full flex-col items-center justify-center self-start">
               <img
-                src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=1200&q=80"
+                src={financialImg}
                 alt="Financial"
                 className="size-full object-cover"
                 loading="lazy"
@@ -41,7 +44,7 @@ export function Layout385() {
           <div className="flex flex-col border border-border-primary">
             <div className="flex size-full flex-col items-center justify-center self-start">
               <img
-                src="https://images.unsplash.com/photo-1521737711867-e3b97375f902?w=800&q=80"
+                src={careerImg}
                 alt="Career"
                 className="size-full object-cover"
                 loading="lazy"

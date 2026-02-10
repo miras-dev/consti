@@ -1,9 +1,10 @@
 'use client';
-import { Button, useMediaQuery } from "@relume_io/relume-ui";
-import type { ButtonProps } from "@relume_io/relume-ui";
+import { useMediaQuery } from "@relume_io/relume-ui";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
 import { RxChevronRight } from "react-icons/rx";
+import { useLanguage } from "@/contexts/LanguageContext";
+import { useCmsImage } from "@/hooks/useCmsImage";
 
 type ImageProps = {
     src: string;
@@ -20,17 +21,18 @@ type Props = {
     heading: string;
     description: string;
     subHeadings: SubHeadingProps[];
-    buttons: ButtonProps[];
     image: ImageProps;
 };
 
 export type Layout412Props = React.ComponentPropsWithoutRef<"section"> & Partial<Props>;
 
 export const Layout412 = (props: Layout412Props) => {
-    const { tagline, heading, description, buttons, image } = {
+    const { t } = useLanguage();
+    const { image } = {
         ...Layout412Defaults,
         ...props,
     };
+    const mainImage = useCmsImage("home.layout412.main", image.src);
 
     const sectionRef = useRef<HTMLElement>(null);
     const isMobile = useMediaQuery("(max-width: 767px)");
@@ -69,24 +71,24 @@ export const Layout412 = (props: Layout412Props) => {
                 >
                     <div className="container">
                         <div className="max-w-md lg:max-w-lg">
-                            <p className="mb-3 font-semibold md:mb-4">{tagline}</p>
+                            <p className="mb-3 font-semibold md:mb-4">{t.about.tagline}</p>
                             <h1 className="mb-5 text-3xl font-bold md:mb-6 md:text-4xl lg:text-5xl">
-                                {heading}
+                                {t.about.heading}
                             </h1>
-                            <p className="mb-6 md:mb-8 md:text-lg">{description}</p>
+                            <p className="mb-6 md:mb-8 md:text-lg">{t.about.description}</p>
                             <div className="mt-6 flex items-center gap-4 md:mt-8">
                                 <a
                                     href="/about-constantin-nixdorff"
-                                    className="inline-flex items-center justify-center border border-white bg-white px-6 py-3 text-sm font-medium text-black transition-colors hover:bg-transparent hover:text-white"
+                                    className="btn-outline-light"
                                 >
-                                    About me
+                                    {t.about.aboutMe}
                                 </a>
                                 <a
                                     href="/services"
-                                    className="inline-flex items-center gap-2 text-sm font-medium text-white underline underline-offset-4 transition-colors hover:text-white/80"
+                                    className="inline-flex items-center gap-2 text-sm font-medium text-white underline underline-offset-4 transition-all duration-200 hover:text-white/80 hover:gap-3"
                                 >
-                                    Explore
-                                    <RxChevronRight />
+                                    {t.about.explore}
+                                    <RxChevronRight className="transition-transform duration-200" />
                                 </a>
                             </div>
                         </div>
@@ -99,7 +101,7 @@ export const Layout412 = (props: Layout412Props) => {
                     style={isMobile ? {} : { x: imageX }}
                 >
                     <img
-                        src={image.src}
+                        src={mainImage}
                         alt={image.alt}
                         className="absolute bottom-0 right-0 h-full w-full object-contain object-bottom"
                     />
@@ -115,15 +117,6 @@ export const Layout412Defaults: Props = {
     description:
         "I work with students, professionals, and internationals to build financial stability and advance their careers. My approach combines practical expertise with straightforward communication, cutting through complexity to reveal what matters most for your future.",
     subHeadings: [],
-    buttons: [
-        { title: "About me", variant: "secondary" },
-        {
-            title: "Explore",
-            variant: "link",
-            size: "link",
-            iconRight: <RxChevronRight />,
-        },
-    ],
     image: {
         src: "Main.png",
         alt: "Constantin Nixdorff - Financial and Career Consultant",

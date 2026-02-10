@@ -4,8 +4,13 @@ import { Button } from "@relume_io/relume-ui";
 import React, { useEffect, useState, useCallback, useRef } from "react";
 import { RxChevronRight } from "react-icons/rx";
 import clsx from "clsx";
+import { useCmsImage } from "@/hooks/useCmsImage";
 
 export function Layout349() {
+  const bankingImg = useCmsImage('services.layout349.banking', 'https://images.unsplash.com/photo-1556742502-ec7c0e9f34b1?w=800&h=600&q=80&fit=crop');
+  const investmentImg = useCmsImage('services.layout349.investment', 'https://images.unsplash.com/photo-1590283603385-17ffb3a7f29f?w=800&h=600&q=80&fit=crop');
+  const insuranceImg = useCmsImage('services.layout349.insurance', 'https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=800&h=600&q=80&fit=crop');
+  const retirementImg = useCmsImage('services.layout349.retirement', 'https://images.unsplash.com/photo-1531973576160-7125cd663d86?w=800&h=600&q=80&fit=crop');
   const [activeSection, setActiveSection] = useState(0);
   const sectionRefs = useRef<(HTMLDivElement | null)[]>([]);
 
@@ -49,25 +54,25 @@ export function Layout349() {
       label: "Banking",
       title: "Accounts, cards, and financial foundations",
       desc: "The basics matter. I help you navigate banking options, choose the right accounts and cards, and build a solid financial foundation from the start.",
-      image: "https://images.unsplash.com/photo-1556742502-ec7c0e9f34b1?w=800&h=600&q=80&fit=crop"
+      image: bankingImg
     },
     {
       label: "Investment",
       title: "ETFs, portfolios, and long-term growth",
       desc: "Building wealth requires discipline and clarity. I guide you through investment options that match your goals and risk tolerance.",
-      image: "https://images.unsplash.com/photo-1590283603385-17ffb3a7f29f?w=800&h=600&q=80&fit=crop"
+      image: investmentImg
     },
     {
       label: "Insurance",
       title: "Coverage that protects what matters",
       desc: "From health to liability insurance, I analyse your needs and recommend coverage that gives you real security without unnecessary costs.",
-      image: "https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=800&h=600&q=80&fit=crop"
+      image: insuranceImg
     },
     {
       label: "Retirement",
       title: "Planning for a secure future",
       desc: "Retirement planning starts earlier than most think. I help you understand pension schemes, savings vehicles, and tax-efficient strategies.",
-      image: "https://images.unsplash.com/photo-1531973576160-7125cd663d86?w=800&h=600&q=80&fit=crop"
+      image: retirementImg
     },
   ];
 

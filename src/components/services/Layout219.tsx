@@ -10,26 +10,29 @@ import {
   TabsTrigger,
   VideoIframe,
 } from "@relume_io/relume-ui";
-import React from "react";
 import { FaCirclePlay } from "react-icons/fa6";
+import { useCmsImage } from "@/hooks/useCmsImage";
 
 export function Layout219() {
+  const transparencyImg = useCmsImage('services.layout219.transparency', 'https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=600&h=400&fit=crop&crop=center&q=80');
+  const personalizedImg = useCmsImage('services.layout219.personalized', 'https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=600&h=400&fit=crop&crop=center&q=80');
+  const partnershipImg = useCmsImage('services.layout219.partnership', 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&h=400&fit=crop&crop=center&q=80');
   const tabData = [
     {
       value: "tab-one",
       title: "Transparent guidance",
       description: "You'll understand every recommendation and the reasoning behind it. No jargon, no hidden agendas, just clear advice you can trust.",
       content: "image",
-      imageSrc: "https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=800&q=80",
-      imageAlt: "Transparent guidance illustration"
+      imageSrc: transparencyImg,
+      imageAlt: "Professional financial advisor explaining charts and documents to client"
     },
     {
       value: "tab-two",
       title: "Personalized approach",
       description: "Every financial situation is unique. I take time to understand your specific goals, constraints, and preferences before making recommendations.",
       content: "video",
-      imageSrc: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800&q=80",
-      imageAlt: "Personalized approach video",
+      imageSrc: personalizedImg,
+      imageAlt: "One-on-one consultation meeting between advisor and client",
       videoUrl: "https://www.youtube.com/embed/8DKLYsikxTs?si=Ch9W0KrDWWUiCMMW"
     },
     {
@@ -37,8 +40,8 @@ export function Layout219() {
       title: "Long-term partnership",
       description: "Financial planning isn't a one-time event. I provide ongoing support and adjust strategies as your life and goals evolve.",
       content: "image",
-      imageSrc: "https://images.unsplash.com/photo-1486312338219-ce68e2c6b696?w=800&q=80",
-      imageAlt: "Long-term partnership illustration"
+      imageSrc: partnershipImg,
+      imageAlt: "Business handshake representing long-term partnership and trust"
     }
   ];
 
@@ -59,15 +62,15 @@ export function Layout219() {
                       <img
                         src={tab.imageSrc}
                         alt={tab.imageAlt}
-                        className="size-full object-cover"
+                        className="w-full h-[400px] object-cover rounded-lg"
                         loading="lazy"
                         onError={(e) => {
                           const target = e.target as HTMLImageElement;
-                          target.style.display = 'none';
+                          target.src = "https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=600&h=400&fit=crop&crop=center&q=80";
                         }}
                       />
                       <FaCirclePlay className="absolute z-20 size-16 text-white" />
-                      <span className="absolute inset-0 z-10 bg-black/50" />
+                      <span className="absolute inset-0 z-10 bg-black/50 rounded-lg" />
                     </DialogTrigger>
                     <DialogContent>
                       <VideoIframe video={tab.videoUrl || "https://www.youtube.com/embed/8DKLYsikxTs?si=Ch9W0KrDWWUiCMMW"} />
@@ -77,11 +80,11 @@ export function Layout219() {
                   <img
                     src={tab.imageSrc}
                     alt={tab.imageAlt}
-                    className="size-full object-cover"
+                    className="w-full h-[400px] object-cover rounded-lg"
                     loading="lazy"
                     onError={(e) => {
                       const target = e.target as HTMLImageElement;
-                      target.style.display = 'none';
+                      target.src = "https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=600&h=400&fit=crop&crop=center&q=80";
                     }}
                   />
                 )}

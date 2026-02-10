@@ -1,10 +1,12 @@
 "use client";
 
-import { Button, useMediaQuery } from "@relume_io/relume-ui";
+import { useMediaQuery } from "@relume_io/relume-ui";
 import { AnimatePresence, motion } from "framer-motion";
-import React, { useState } from "react";
+import { useState } from "react";
 import { RxChevronDown } from "react-icons/rx";
 import Link from "next/link";
+import { useLanguage } from "@/contexts/LanguageContext";
+import { useCmsImage } from "@/hooks/useCmsImage";
 
 const useRelume = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -35,22 +37,32 @@ const useRelume = () => {
 
 export function Navbar2() {
   const useActive = useRelume();
+  const { language, setLanguage, t } = useLanguage();
+  const logoSrc = useCmsImage('shared.logo', 'https://d22po4pjz3o32e.cloudfront.net/logo-image.svg');
+
+  const toggleLanguage = () => {
+    setLanguage(language === 'en' ? 'de' : 'en');
+  };
 
   return (
-    <nav className="fixed top-0 left-0 z-50 flex w-full items-center border-b border-border-primary bg-white lg:min-h-18 lg:px-[5%]">
+    <nav className="fixed top-0 left-0 z-50 flex w-full items-center border-b border-border-primary bg-white/95 backdrop-blur-md lg:min-h-18 lg:px-[5%] shadow-elevation-1">
       <div className="mx-auto size-full lg:grid lg:grid-cols-[0.375fr_1fr_0.375fr] lg:items-center lg:justify-between lg:gap-4">
         <div className="flex min-h-16 items-center justify-between px-[5%] md:min-h-18 lg:min-h-full lg:px-0">
           <Link href="/">
             <img
-              src="https://d22po4pjz3o32e.cloudfront.net/logo-image.svg"
+              src={logoSrc}
               alt="Logo image"
             />
           </Link>
           <div className="flex items-center gap-4 lg:hidden">
             <div>
-              <Button className="w-full px-4 py-1" title="Deutsch" size="sm">
-                Deutsch
-              </Button>
+              <button
+                className="btn-primary text-xs px-4 py-2"
+                title={language === 'en' ? t.navbar.deutsch : t.navbar.english}
+                onClick={toggleLanguage}
+              >
+                {language === 'en' ? t.navbar.deutsch : t.navbar.english}
+              </button>
             </div>
             <button
               className="-mr-2 flex size-12 flex-col items-center justify-center lg:hidden"
@@ -111,19 +123,19 @@ export function Navbar2() {
             href="/"
             className="block py-3 text-md text-black first:pt-7 lg:px-4 lg:py-2 lg:text-base first:lg:pt-2"
           >
-            Home
+            {t.navbar.home}
           </Link>
           <Link
             href="/about-constantin-nixdorff"
             className="block py-3 text-md text-black lg:px-4 lg:py-2 lg:text-base"
           >
-            About
+            {t.navbar.about}
           </Link>
           <Link
             href="/services"
             className="block py-3 text-md text-black lg:px-4 lg:py-2 lg:text-base"
           >
-            Services
+            {t.navbar.services}
           </Link>
           <div
             onMouseEnter={useActive.openOnDesktopDropdownMenu}
@@ -133,7 +145,7 @@ export function Navbar2() {
               className="flex w-full items-center justify-center gap-4 py-3 text-center text-md text-black lg:w-auto lg:flex-none lg:justify-start lg:gap-2 lg:px-4 lg:py-2 lg:text-base"
               onClick={useActive.openOnMobileDropdownMenu}
             >
-              <span>More</span>
+              <span>{t.navbar.more}</span>
               <motion.span
                 variants={{ rotated: { rotate: 180 }, initial: { rotate: 0 } }}
                 animate={useActive.animateDropdownMenuIcon}
@@ -168,28 +180,32 @@ export function Navbar2() {
                   href="/services"
                   className="block py-3 text-center text-black lg:px-4 lg:py-2 lg:text-left"
                 >
-                  Financial
+                  {t.navbar.financial}
                 </Link>
                 <Link
                   href="/services"
                   className="block py-3 text-center text-black lg:px-4 lg:py-2 lg:text-left"
                 >
-                  Career
+                  {t.navbar.career}
                 </Link>
                 <Link
                   href="/contact"
                   className="block py-3 text-center text-black lg:px-4 lg:py-2 lg:text-left"
                 >
-                  Contact
+                  {t.navbar.contact}
                 </Link>
               </motion.nav>
             </AnimatePresence>
           </div>
         </motion.div>
         <div className="hidden justify-self-end lg:block">
-          <Button className="px-6 py-2" title="Deutsch" size="sm">
-            Deutsch
-          </Button>
+          <button
+            className="btn-primary text-xs px-4 py-2"
+            title={language === 'en' ? t.navbar.deutsch : t.navbar.english}
+            onClick={toggleLanguage}
+          >
+            {language === 'en' ? t.navbar.deutsch : t.navbar.english}
+          </button>
         </div>
       </div>
     </nav>

@@ -3,10 +3,12 @@
 import { Button } from "@relume_io/relume-ui";
 import { motion, useInView } from "framer-motion";
 import React, { useRef } from "react";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 export function Cta57() {
   const sectionRef = useRef<HTMLDivElement>(null);
   const isInView = useInView(sectionRef, { once: true, amount: 0.3 });
+  const { t } = useLanguage();
 
   return (
     <section id="relume" className="bg-black text-white px-[5%] py-16 md:py-24 lg:py-28">
@@ -18,7 +20,7 @@ export function Cta57() {
             transition={{ type: "spring", bounce: 0, duration: 0.8 }}
             className="text-4xl font-bold md:text-5xl lg:text-6xl"
           >
-            Start your consultation today
+            {t.cta.heading1}
           </motion.h1>
           <motion.h1
             initial={{ x: "100%", opacity: 0 }}
@@ -26,15 +28,14 @@ export function Cta57() {
             transition={{ type: "spring", bounce: 0, duration: 0.8, delay: 0.15 }}
             className="mb-5 text-4xl font-bold md:mb-6 md:text-5xl lg:text-6xl"
           >
-            Next steps await
+            {t.cta.heading2}
           </motion.h1>
           <p className="md:text-md">
-            Book a time that works for you and let&apos;s discuss your financial
-            and career goals
+            {t.cta.subtitle}
           </p>
           <div className="mt-6 flex items-center justify-center gap-x-4 md:mt-8">
-            <Button title="Book now">Book now</Button>
-            <Button title="Schedule" variant="secondary">Schedule</Button>
+            <Button title="Book now">{t.cta.bookNow}</Button>
+            <Button title="Schedule" variant="secondary">{t.cta.schedule}</Button>
           </div>
         </div>
       </div>

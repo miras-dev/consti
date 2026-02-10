@@ -2,8 +2,10 @@
 
 import { Button, Input } from "@relume_io/relume-ui";
 import React from "react";
+import { useCmsImage } from "@/hooks/useCmsImage";
 
 export function Cta40() {
+  const consultationImg = useCmsImage('services.cta40.consultation', 'https://images.unsplash.com/photo-1556761175-b413da4baf72?w=800&q=80');
   return (
     <section id="relume" className="bg-black text-white px-[5%] py-16 md:py-24 lg:py-28">
       <div className="container">
@@ -21,7 +23,7 @@ export function Cta40() {
           </div>
           <div className="flex items-center justify-center">
             <img
-              src="https://images.unsplash.com/photo-1556761175-b413da4baf72?w=800&q=80"
+              src={consultationImg}
               className="w-full object-cover"
               alt="Consultation"
               loading="lazy"

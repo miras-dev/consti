@@ -3,8 +3,10 @@
 import { Button } from "@relume_io/relume-ui";
 import React from "react";
 import { RxChevronRight } from "react-icons/rx";
+import { useCmsImage } from "@/hooks/useCmsImage";
 
 export function Layout359() {
+  const careerImg = useCmsImage('services.layout359.career', 'https://images.unsplash.com/photo-1573497491208-6b1acb260507?w=800&q=80');
   return (
     <section id="relume" className="px-[5%] py-16 md:py-24 lg:py-28">
       <div className="container">
@@ -18,7 +20,7 @@ export function Layout359() {
         <div className="grid auto-cols-fr grid-cols-1 border border-border-primary md:grid-cols-2">
           <div className="flex items-center justify-center">
             <img
-              src="https://images.unsplash.com/photo-1573497491208-6b1acb260507?w=800&q=80"
+              src={careerImg}
               className="size-full object-cover"
               alt="Career"
               loading="lazy"

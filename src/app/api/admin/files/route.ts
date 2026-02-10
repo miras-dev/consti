@@ -1,16 +1,9 @@
 import { NextRequest, NextResponse } from "next/server";
 import { getFiles, deleteFileChunks } from "@/lib/rag-store";
-
-function checkAuth(request: NextRequest): boolean {
-  const auth = request.headers.get("authorization");
-  const expected = Buffer.from(
-    `${process.env.ADMIN_USERNAME || "admin"}:${process.env.ADMIN_PASSWORD || "admin123"}`
-  ).toString("base64");
-  return auth === `Basic ${expected}`;
-}
+import { checkAdminAuth } from "@/lib/cms-auth";
 
 export async function GET(request: NextRequest) {
-  if (!checkAuth(request)) {
+  if (!checkAdminAuth(request)) {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
   const files = getFiles();
@@ -18,7 +11,7 @@ export async function GET(request: NextRequest) {
 }
 
 export async function DELETE(request: NextRequest) {
-  if (!checkAuth(request)) {
+  if (!checkAdminAuth(request)) {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
   const { searchParams } = new URL(request.url);

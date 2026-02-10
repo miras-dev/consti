@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { getSettings, saveSettings } from "@/lib/rag-store";
+import { checkAdminAuth } from "@/lib/cms-auth";
 
 export async function GET() {
   const settings = getSettings();
@@ -8,16 +9,11 @@ export async function GET() {
 
 export async function POST(request: NextRequest) {
   try {
-    const body = await request.json();
-    const auth = request.headers.get("authorization");
-    const expected = Buffer.from(
-      `${process.env.ADMIN_USERNAME || "admin"}:${process.env.ADMIN_PASSWORD || "admin123"}`
-    ).toString("base64");
-
-    if (auth !== `Basic ${expected}`) {
+    if (!checkAdminAuth(request)) {
       return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }
 
+    const body = await request.json();
     saveSettings(body);
     return NextResponse.json({ success: true });
   } catch {

@@ -1,6 +1,9 @@
 "use client";
 
 import React, { useState, useEffect, useCallback } from "react";
+import ContentTab from "@/components/admin/ContentTab";
+import ImagesTab from "@/components/admin/ImagesTab";
+import VersionsTab from "@/components/admin/VersionsTab";
 
 interface FileRecord {
   id: string;
@@ -34,6 +37,7 @@ export default function AdminPage() {
   const [password, setPassword] = useState("");
   const [authError, setAuthError] = useState("");
   const [authHeader, setAuthHeader] = useState("");
+  const [adminName, setAdminName] = useState("");
 
   const [settings, setSettings] = useState<ChatSettings>(DEFAULT_SETTINGS);
   const [settingsSaved, setSettingsSaved] = useState(false);
@@ -44,7 +48,7 @@ export default function AdminPage() {
   const [uploadStatus, setUploadStatus] = useState("");
   const [dragOver, setDragOver] = useState(false);
 
-  const [activeTab, setActiveTab] = useState<"settings" | "files">("settings");
+  const [activeTab, setActiveTab] = useState<"settings" | "files" | "content" | "images" | "versions">("settings");
 
   const makeAuthHeader = (user: string, pass: string) =>
     "Basic " + btoa(`${user}:${pass}`);
@@ -72,6 +76,7 @@ export default function AdminPage() {
       });
       if (res.ok) {
         setAuthHeader(auth);
+        setAdminName(username);
         setIsAuthenticated(true);
       } else {
         setAuthError("Invalid credentials");
@@ -235,45 +240,52 @@ export default function AdminPage() {
       <div className="border-b border-border-primary bg-white">
         <div className="mx-auto flex max-w-5xl items-center justify-between px-6 py-4">
           <h1 className="text-xl font-bold text-text-primary">
-            Chatbot Admin
+            Admin Dashboard
           </h1>
-          <button
-            onClick={() => {
-              setIsAuthenticated(false);
-              setAuthHeader("");
-              setUsername("");
-              setPassword("");
-            }}
-            className="rounded-md border border-border-primary px-3 py-1.5 text-sm transition-colors hover:bg-neutral-lightest"
-          >
-            Logout
-          </button>
+          <div className="flex items-center gap-4">
+            <span className="text-sm text-text-secondary">
+              Logged in as <span className="font-semibold text-text-primary">{adminName}</span>
+            </span>
+            <button
+              onClick={() => {
+                setIsAuthenticated(false);
+                setAuthHeader("");
+                setAdminName("");
+                setUsername("");
+                setPassword("");
+              }}
+              className="rounded-md border border-border-primary px-3 py-1.5 text-sm transition-colors hover:bg-neutral-lightest"
+            >
+              Logout
+            </button>
+          </div>
         </div>
       </div>
 
       <div className="mx-auto max-w-5xl px-6 py-8">
         {/* Tabs */}
         <div className="mb-8 flex gap-1 rounded-lg border border-border-primary bg-white p-1">
-          <button
-            onClick={() => setActiveTab("settings")}
-            className={`flex-1 rounded-md px-4 py-2 text-sm font-medium transition-colors ${
-              activeTab === "settings"
-                ? "bg-black text-white"
-                : "text-text-primary hover:bg-neutral-lightest"
-            }`}
-          >
-            Chatbot Settings
-          </button>
-          <button
-            onClick={() => setActiveTab("files")}
-            className={`flex-1 rounded-md px-4 py-2 text-sm font-medium transition-colors ${
-              activeTab === "files"
-                ? "bg-black text-white"
-                : "text-text-primary hover:bg-neutral-lightest"
-            }`}
-          >
-            RAG Files
-          </button>
+          {(
+            [
+              { key: "content", label: "Content" },
+              { key: "images", label: "Images" },
+              { key: "versions", label: "Versions" },
+              { key: "settings", label: "Chatbot" },
+              { key: "files", label: "RAG Files" },
+            ] as const
+          ).map((tab) => (
+            <button
+              key={tab.key}
+              onClick={() => setActiveTab(tab.key)}
+              className={`flex-1 rounded-md px-4 py-2 text-sm font-medium transition-colors ${
+                activeTab === tab.key
+                  ? "bg-black text-white"
+                  : "text-text-primary hover:bg-neutral-lightest"
+              }`}
+            >
+              {tab.label}
+            </button>
+          ))}
         </div>
 
         {/* Settings Tab */}
@@ -431,6 +443,15 @@ export default function AdminPage() {
             </div>
           </div>
         )}
+
+        {/* Content Tab */}
+        {activeTab === "content" && <ContentTab authHeader={authHeader} adminName={adminName} />}
+
+        {/* Images Tab */}
+        {activeTab === "images" && <ImagesTab authHeader={authHeader} adminName={adminName} />}
+
+        {/* Versions Tab */}
+        {activeTab === "versions" && <VersionsTab authHeader={authHeader} />}
 
         {/* Files Tab */}
         {activeTab === "files" && (

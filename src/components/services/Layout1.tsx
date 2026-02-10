@@ -3,8 +3,10 @@
 import { Button } from "@relume_io/relume-ui";
 import React from "react";
 import { RxChevronRight } from "react-icons/rx";
+import { useCmsImage } from "@/hooks/useCmsImage";
 
 export function Layout1() {
+  const financeImg = useCmsImage('services.layout1.finance', 'https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=800&q=80');
   return (
     <section id="relume" className="px-[5%] py-16 md:py-24 lg:py-28">
       <div className="container">
@@ -20,7 +22,7 @@ export function Layout1() {
           </div>
           <div>
             <img
-              src="https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=800&q=80"
+              src={financeImg}
               className="w-full object-cover"
               alt="Finance"
               loading="lazy"

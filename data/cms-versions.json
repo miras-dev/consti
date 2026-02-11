@@ -1,35 +1,5 @@
 [
   {
-    "id": "ver_1770586914952_q9n8xl",
-    "timestamp": "2026-02-08T21:41:54.952Z",
-    "type": "text",
-    "description": "Updated 1 key in EN",
-    "textContent": {
-      "en": {
-        "hero": {
-          "title": "Build your financial future with clarity and purpose"
-        }
-      },
-      "de": {}
-    },
-    "imageOverrides": []
-  },
-  {
-    "id": "ver_1770636563866_08ii6t",
-    "timestamp": "2026-02-09T11:29:23.866Z",
-    "type": "text",
-    "description": "Updated 1 key in EN",
-    "textContent": {
-      "en": {
-        "hero": {
-          "title": "Build your financial future with clarity and purpose."
-        }
-      },
-      "de": {}
-    },
-    "imageOverrides": []
-  },
-  {
     "id": "ver_1770636580800_9fw7ch",
     "timestamp": "2026-02-09T11:29:40.800Z",
     "type": "text",
@@ -82,6 +52,120 @@
     "type": "both",
     "description": "Reverted to version from 2026-02-09T11:38:00.430Z",
     "adminName": "consti",
+    "commitMessage": "Revert to previous version",
+    "textContent": {
+      "en": {
+        "hero": {
+          "title": "Build your financial future with clarity and purpose"
+        }
+      },
+      "de": {}
+    },
+    "imageOverrides": []
+  },
+  {
+    "id": "ver_1770820041358_t1vrl1",
+    "timestamp": "2026-02-11T14:27:21.358Z",
+    "type": "text",
+    "description": "Updated 1 key in DE",
+    "adminName": "admin",
+    "commitMessage": "temp",
+    "textContent": {
+      "en": {
+        "hero": {
+          "title": "Build your financial future with clarity and purpose"
+        }
+      },
+      "de": {
+        "hero": {
+          "title": "Bauen Sie Ihre finanzielle Zukunftmit Klarheit und Zielstrebigkeit auf."
+        }
+      }
+    },
+    "imageOverrides": []
+  },
+  {
+    "id": "ver_1770820060073_o5lrgq",
+    "timestamp": "2026-02-11T14:27:40.073Z",
+    "type": "text",
+    "description": "Text content saved",
+    "adminName": "admin",
+    "commitMessage": "temp",
+    "textContent": {
+      "en": {
+        "hero": {
+          "title": "Build your financial future with clarity and purpose"
+        }
+      },
+      "de": {
+        "hero": {
+          "title": "Bauen Sie Ihre finanzielle Zukunftmit Klarheit und Zielstrebigkeit auf."
+        }
+      }
+    },
+    "imageOverrides": []
+  },
+  {
+    "id": "ver_1770820095680_1eoyzj",
+    "timestamp": "2026-02-11T14:28:15.680Z",
+    "type": "text",
+    "description": "Updated 1 key in EN",
+    "adminName": "admin",
+    "commitMessage": "temp",
+    "textContent": {
+      "en": {
+        "hero": {
+          "title": "Build your financial future with clarity and purpose."
+        }
+      },
+      "de": {
+        "hero": {
+          "title": "Bauen Sie Ihre finanzielle Zukunftmit Klarheit und Zielstrebigkeit auf."
+        }
+      }
+    },
+    "imageOverrides": []
+  },
+  {
+    "id": "ver_1770820123788_ka4v3j",
+    "timestamp": "2026-02-11T14:28:43.788Z",
+    "type": "both",
+    "description": "Reverted to version from 2026-02-09T11:59:34.834Z",
+    "adminName": "admin",
+    "commitMessage": "Revert to previous version",
+    "textContent": {
+      "en": {
+        "hero": {
+          "title": "Build your financial future with clarity and purpose"
+        }
+      },
+      "de": {}
+    },
+    "imageOverrides": []
+  },
+  {
+    "id": "ver_1770822230712_mh40rh",
+    "timestamp": "2026-02-11T15:03:50.712Z",
+    "type": "text",
+    "description": "Updated 1 key in EN",
+    "adminName": "admin",
+    "commitMessage": "changing the heading of header",
+    "textContent": {
+      "en": {
+        "hero": {
+          "title": "Build your financial future with clarity and purpose."
+        }
+      },
+      "de": {}
+    },
+    "imageOverrides": []
+  },
+  {
+    "id": "ver_1770822362275_8b9w8j",
+    "timestamp": "2026-02-11T15:06:02.275Z",
+    "type": "both",
+    "description": "Reverted to version from 2026-02-11T14:28:43.788Z",
+    "adminName": "admin",
     "commitMessage": "Revert to previous version",
     "textContent": {
       "en": {

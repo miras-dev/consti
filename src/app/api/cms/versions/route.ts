@@ -2,6 +2,8 @@ import { NextRequest, NextResponse } from "next/server";
 import { getAdminName } from "@/lib/cms-auth";
 import { getVersions, revertToVersion } from "@/lib/cms-store";
 
+export const dynamic = "force-dynamic";
+
 export async function GET(request: NextRequest) {
   const adminName = getAdminName(request);
   if (!adminName) {

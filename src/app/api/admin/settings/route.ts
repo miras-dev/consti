@@ -2,6 +2,8 @@ import { NextRequest, NextResponse } from "next/server";
 import { getSettings, saveSettings } from "@/lib/rag-store";
 import { checkAdminAuth } from "@/lib/cms-auth";
 
+export const dynamic = "force-dynamic";
+
 export async function GET() {
   const settings = getSettings();
   return NextResponse.json(settings);

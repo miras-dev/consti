@@ -3,6 +3,8 @@ import openai from "@/lib/openai";
 import { getSettings, searchChunks } from "@/lib/rag-store";
 import { convertMarkdownToOrganizedText } from "@/lib/markdownToText";
 
+export const dynamic = "force-dynamic";
+
 export async function POST(request: NextRequest) {
   try {
     const { messages } = await request.json();

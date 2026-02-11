@@ -8,6 +8,8 @@ import {
 } from "@/lib/rag-store";
 import { checkAdminAuth } from "@/lib/cms-auth";
 
+export const dynamic = "force-dynamic";
+
 export async function POST(request: NextRequest) {
   if (!checkAdminAuth(request)) {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });

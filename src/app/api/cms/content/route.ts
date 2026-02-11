@@ -2,6 +2,8 @@ import { NextRequest, NextResponse } from "next/server";
 import { getAdminName } from "@/lib/cms-auth";
 import { getTextOverrides, saveTextOverrides } from "@/lib/cms-store";
 
+export const dynamic = "force-dynamic";
+
 export async function GET() {
   const overrides = getTextOverrides();
   return NextResponse.json(overrides, {

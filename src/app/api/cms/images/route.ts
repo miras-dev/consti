@@ -9,6 +9,8 @@ import {
   getCmsImagesDir,
 } from "@/lib/cms-store";
 
+export const dynamic = "force-dynamic";
+
 export async function GET() {
   const overrides = getImageOverrides();
   return NextResponse.json({ overrides });

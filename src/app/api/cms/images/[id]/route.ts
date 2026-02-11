@@ -2,6 +2,8 @@ import { NextRequest, NextResponse } from "next/server";
 import { readFileSync } from "fs";
 import { getImagePath, getImageOverrides } from "@/lib/cms-store";
 
+export const dynamic = "force-dynamic";
+
 export async function GET(
   _request: NextRequest,
   { params }: { params: Promise<{ id: string }> }

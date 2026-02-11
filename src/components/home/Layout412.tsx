@@ -1,7 +1,7 @@
 'use client';
 import { useMediaQuery } from "@relume_io/relume-ui";
 import { motion, useScroll, useTransform } from "framer-motion";
-import { useRef } from "react";
+import { useRef, useState, useEffect } from "react";
 import { RxChevronRight } from "react-icons/rx";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { useCmsImage } from "@/hooks/useCmsImage";
@@ -35,7 +35,12 @@ export const Layout412 = (props: Layout412Props) => {
     const mainImage = useCmsImage("home.layout412.main", image.src);
 
     const sectionRef = useRef<HTMLElement>(null);
+    const [hasMounted, setHasMounted] = useState(false);
     const isMobile = useMediaQuery("(max-width: 767px)");
+
+    useEffect(() => {
+        setHasMounted(true);
+    }, []);
 
     const { scrollYProgress } = useScroll({
         target: sectionRef,
@@ -52,13 +57,13 @@ export const Layout412 = (props: Layout412Props) => {
     // Text fades in and slides up as image moves right
     const textOpacity = useTransform(
         scrollYProgress,
-        [0.3, 0.7, 1],
-        [0, 0.5, 1]
+        [0, 0.3, 0.6],
+        [0, 0.7, 1]
     );
     const textY = useTransform(
         scrollYProgress,
-        [0.3, 0.7, 1],
-        [60, 20, 0]
+        [0, 0.3, 0.6],
+        [40, 10, 0]
     );
 
     return (
@@ -67,7 +72,7 @@ export const Layout412 = (props: Layout412Props) => {
                 {/* Text content - left side, vertically centered */}
                 <motion.div
                     className="relative z-10 flex h-full items-center px-[5%]"
-                    style={isMobile ? {} : { opacity: textOpacity, y: textY }}
+                    style={!hasMounted || isMobile ? {} : { opacity: textOpacity, y: textY }}
                 >
                     <div className="container">
                         <div className="max-w-md lg:max-w-lg">
@@ -98,7 +103,7 @@ export const Layout412 = (props: Layout412Props) => {
                 {/* Image - starts centered, slides right, anchored to bottom */}
                 <motion.div
                     className="absolute bottom-0 right-0 h-full w-full md:w-[55%]"
-                    style={isMobile ? {} : { x: imageX }}
+                    style={!hasMounted || isMobile ? {} : { x: imageX }}
                 >
                     <img
                         src={mainImage}

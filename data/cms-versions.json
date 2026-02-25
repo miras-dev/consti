@@ -1,35 +1,5 @@
 [
   {
-    "id": "ver_1770636580800_9fw7ch",
-    "timestamp": "2026-02-09T11:29:40.800Z",
-    "type": "text",
-    "description": "Text content saved",
-    "textContent": {
-      "en": {
-        "hero": {
-          "title": "Build your financial future with clarity and purpose."
-        }
-      },
-      "de": {}
-    },
-    "imageOverrides": []
-  },
-  {
-    "id": "ver_1770637080430_4mms8y",
-    "timestamp": "2026-02-09T11:38:00.430Z",
-    "type": "both",
-    "description": "Reverted to version from 2026-02-08T21:41:54.952Z",
-    "textContent": {
-      "en": {
-        "hero": {
-          "title": "Build your financial future with clarity and purpose"
-        }
-      },
-      "de": {}
-    },
-    "imageOverrides": []
-  },
-  {
     "id": "ver_1770638350738_i1jn1b",
     "timestamp": "2026-02-09T11:59:10.738Z",
     "type": "text",
@@ -165,6 +135,40 @@
     "timestamp": "2026-02-11T15:06:02.275Z",
     "type": "both",
     "description": "Reverted to version from 2026-02-11T14:28:43.788Z",
+    "adminName": "admin",
+    "commitMessage": "Revert to previous version",
+    "textContent": {
+      "en": {
+        "hero": {
+          "title": "Build your financial future with clarity and purpose"
+        }
+      },
+      "de": {}
+    },
+    "imageOverrides": []
+  },
+  {
+    "id": "ver_1771508587033_svt1fi",
+    "timestamp": "2026-02-19T13:43:07.033Z",
+    "type": "text",
+    "description": "Updated 1 key in EN",
+    "adminName": "admin",
+    "commitMessage": "demo",
+    "textContent": {
+      "en": {
+        "hero": {
+          "title": "Build your financial future with clarity and purpose."
+        }
+      },
+      "de": {}
+    },
+    "imageOverrides": []
+  },
+  {
+    "id": "ver_1771508613071_6qosi5",
+    "timestamp": "2026-02-19T13:43:33.071Z",
+    "type": "both",
+    "description": "Reverted to version from 2026-02-11T15:06:02.275Z",
     "adminName": "admin",
     "commitMessage": "Revert to previous version",
     "textContent": {

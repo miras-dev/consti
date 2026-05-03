@@ -10,7 +10,8 @@ interface AdminCredential {
  * Falls back to legacy ADMIN_USERNAME/ADMIN_PASSWORD if ADMIN_USERS is not set.
  */
 function getAdminCredentials(): AdminCredential[] {
-  const adminUsers = process.env.NEXT_PUBLIC_ADMIN_USERS;
+  const adminUsers = process.env.ADMIN_USERS;
+  console.log("[auth] ADMIN_USERS present:", !!adminUsers, "| parsed entries:", adminUsers ? adminUsers.split(",").length : 0);
   if (adminUsers) {
     return adminUsers.split(",").map((entry) => {
       const [username, ...passwordParts] = entry.trim().split(":");

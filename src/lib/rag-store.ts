@@ -1,7 +1,7 @@
 import { readFileSync, writeFileSync, existsSync, mkdirSync } from "fs";
 import path from "path";
 
-const DATA_DIR = path.join(process.cwd(), "data");
+const DATA_DIR = process.env.VERCEL ? "/tmp/data" : path.join(process.cwd(), "data");
 const FILES_DIR = path.join(DATA_DIR, "uploads");
 const CHUNKS_FILE = path.join(DATA_DIR, "chunks.json");
 const SETTINGS_FILE = path.join(DATA_DIR, "settings.json");

@@ -1,7 +1,7 @@
 import { readFileSync, writeFileSync, existsSync, mkdirSync, unlinkSync } from "fs";
 import path from "path";
 
-const DATA_DIR = path.join(process.cwd(), "data");
+const DATA_DIR = process.env.VERCEL ? "/tmp/data" : path.join(process.cwd(), "data");
 const CMS_CONTENT_FILE = path.join(DATA_DIR, "cms-content.json");
 const CMS_IMAGES_DIR = path.join(DATA_DIR, "cms-images");
 const CMS_IMAGE_OVERRIDES_FILE = path.join(DATA_DIR, "cms-image-overrides.json");
